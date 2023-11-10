@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Karate Timeline</title>
+    <style>
+      body, html { font-family: arial, sans-serif; font-size: 11pt; }
+      #visualization { box-sizing: border-box; width: 100%; height: 300px; }
+      .vis-item.failed { background-color: #F2928C; }
+      .page-heading { padding: 0.5em; margin-bottom: 0.5em; background-color: lightcyan; border: 1px solid gray; }
+    </style>
+    <script src="res/vis.min.js"></script>
+    <link href="res/vis.min.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div class="page-heading">
+      <a href="karate-summary.html">Summary</a>
+    </div>     
+    <div id="visualization"></div>
+    <script>
+var groups = [{"content":"main","id":1}];
+var items = [{"id":1,"group":1,"content":"api1[1:3]","start":1699372551102,"end":1699372552777,"title":"api1[1:3] 21:25:51.102-21:25:52.777 Get a list of users"},{"id":2,"group":1,"content":"api1[2:11]","start":1699372552788,"end":1699372554248,"title":"api1[2:11] 21:25:52.788-21:25:54.248 Get user details - user not found","className":"failed"},{"id":3,"group":1,"content":"api1[3:18]","start":1699372554286,"end":1699372556086,"title":"api1[3:18] 21:25:54.286-21:25:56.086 Create a new user"},{"id":4,"group":1,"content":"api1[4:26]","start":1699372556106,"end":1699372557009,"title":"api1[4:26] 21:25:56.106-21:25:57.009 Update user"},{"id":5,"group":1,"content":"api1[5:34]","start":1699372557030,"end":1699372557716,"title":"api1[5:34] 21:25:57.030-21:25:57.716 Delete user"},{"id":6,"group":1,"content":"api2[1:3]","start":1699372559135,"end":1699372560380,"title":"api2[1:3] 21:25:59.135-21:26:00.380 Get a single user"}];
+</script>
+    <script>
+      var container = document.getElementById('visualization');
+      var timeline = new vis.Timeline(container);
+      timeline.setOptions({groupOrder: 'content'});
+      timeline.setGroups(new vis.DataSet(groups));
+      timeline.setItems(new vis.DataSet(items));
+    </script>
+  </body>
+</html>

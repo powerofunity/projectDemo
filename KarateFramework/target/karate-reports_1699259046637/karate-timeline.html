@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Karate Timeline</title>
+    <style>
+      body, html { font-family: arial, sans-serif; font-size: 11pt; }
+      #visualization { box-sizing: border-box; width: 100%; height: 300px; }
+      .vis-item.failed { background-color: #F2928C; }
+      .page-heading { padding: 0.5em; margin-bottom: 0.5em; background-color: lightcyan; border: 1px solid gray; }
+    </style>
+    <script src="res/vis.min.js"></script>
+    <link href="res/vis.min.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div class="page-heading">
+      <a href="karate-summary.html">Summary</a>
+    </div>     
+    <div id="visualization"></div>
+    <script>
+var groups = [{"content":"main","id":1}];
+var items = [{"id":1,"group":1,"content":"src\/test\/java\/api1[1:3]","start":1699258904823,"end":1699258908036,"title":"src\/test\/java\/api1[1:3] 13:51:44.823-13:51:48.036 Get a  list of users"},{"id":2,"group":1,"content":"src\/test\/java\/api1[2:11]","start":1699258908044,"end":1699258908225,"title":"src\/test\/java\/api1[2:11] 13:51:48.044-13:51:48.225 get user details - user not found","className":"failed"},{"id":3,"group":1,"content":"src\/test\/java\/api1[3:17]","start":1699258908237,"end":1699258908928,"title":"src\/test\/java\/api1[3:17] 13:51:48.237-13:51:48.928 get single user","className":"failed"}];
+</script>
+    <script>
+      var container = document.getElementById('visualization');
+      var timeline = new vis.Timeline(container);
+      timeline.setOptions({groupOrder: 'content'});
+      timeline.setGroups(new vis.DataSet(groups));
+      timeline.setItems(new vis.DataSet(items));
+    </script>
+  </body>
+</html>
